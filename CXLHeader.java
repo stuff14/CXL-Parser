@@ -1,4 +1,3 @@
-
 public class CXLHeader {
 
     private static int packetNum;

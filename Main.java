@@ -9,6 +9,7 @@ import java.io.IOException;
 public class Main {
 
     private static File[] selection;
+    private static String[] filePath;
 
     public static void main(String[] args) {
 
@@ -25,15 +26,21 @@ public class Main {
 
         }
 
-        String[][] parsedData = new String[selection.length][12];
+        filePath = new String[selection.length];
 
-        for (int i = 0; i < selection.length; i++) {
+        for (int i = 0; i < filePath.length; i++) {
+            filePath[i] = selection[i].getAbsolutePath();
+        }
+
+        String[][] parsedData = new String[filePath.length][12];
+
+        for (int i = 0; i < filePath.length; i++) {
 
             BufferedReader reader;
             String str = "";
 
             try {
-                reader = new BufferedReader(new FileReader(selection[i].getName()));
+                reader = new BufferedReader(new FileReader(filePath[i]));
                 str = reader.readLine();
 
             } catch (IOException e) {
